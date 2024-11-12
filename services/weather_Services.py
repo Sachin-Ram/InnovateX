@@ -6,7 +6,7 @@ from pathlib import Path
 import json
 
 # Get the path to the current directory and append the filename
-file_path = Path(__file__).parent / 'weather_city.json'
+file_path = (Path(__file__).parent / '../Dataset/weather_city.json').resolve()
 
 # Open and load the JSON data
 with file_path.open() as file:
