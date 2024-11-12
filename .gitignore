@@ -1,5 +1,9 @@
+#model test files
 ev/
+model/
 
+
+#venv 
 .env
 
 # Python cache files
