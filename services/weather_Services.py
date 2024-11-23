@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from pathlib import Path
 import json
+from flask import request
 
 # Get the path to the current directory and append the filename
 file_path = (Path(__file__).parent / '../Dataset/weather_city.json').resolve()
@@ -20,6 +21,10 @@ class weather_services:
 
         self.city=city
 
+        print(self.city)
+
+        
+
     def get_lat_long(self):
 
         response=requests.get("http://api.openweathermap.org/geo/1.0/direct?q={}&appid={}".format(self.city,self.api_key))
@@ -30,12 +35,15 @@ class weather_services:
     
     def get_weather(self):
 
-        lat_long_data=self.get_lat_long()
-        latitude=lat_long_data[0]["lon"]
-        longitude=lat_long_data[0]["lat"]
+        # lat_long_data=self.get_lat_long()
 
-        weather_data=requests.get("https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}".format(latitude,longitude,self.api_key))
+        # latitude=lat_long_data[0]["lon"]
 
+        # longitude=lat_long_data[0]["lat"]
+
+        
+        weather_data=requests.get("https://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}".format(self.city,self.api_key))
+        
         result=weather_data.json()
 
         return result
