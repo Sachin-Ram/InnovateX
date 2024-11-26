@@ -1,19 +1,28 @@
-from flask import Flask,request,Blueprint,jsonify
+from flask import Flask,request,Blueprint,jsonify,make_response
 from services.auth import auth
 
 auth_ep=Blueprint("auth",__name__)
 
-@auth_ep.route("/")
+@auth_ep.route("/",methods=['GET','POST'])
 def func():
 
-    object=auth("John","john.doe@example.com")
+
+    print("Body:", request.get_data(as_text=True))
+    print("Form Data:", request.form)
+
+    req=request.get_json()
+    email=req['session']['mail']['value']
+    
+    object=auth("hello",email)
 
     data=object.authenticate()
 
     if data:
 
-        return jsonify({"status":"success"}),200
+        return make_response(jsonify({"status":"success"}),200)
     
     else :
 
-        return jsonify({"status:":"failure"}),404
+        object.adduser()
+        return make_response(jsonify({"status:":"failure"}),404)
+    

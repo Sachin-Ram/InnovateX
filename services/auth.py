@@ -8,11 +8,11 @@ class auth:
 
         self.email=email
 
+        self.conn=database.getConnection()
+
     def authenticate(self):
 
-        conn=database.getConnection()
-
-        user=conn.find_one({"email":self.email})
+        user=self.conn.find_one({"email":self.email})
 
         print(user)
 
@@ -20,4 +20,25 @@ class auth:
 
             return True
         
-        return False
+        else :
+
+            return False
+    
+    def adduser(self):
+
+        mail=self.email
+
+        name=self.name
+
+        data={
+
+            "name":name,
+            "email":mail
+        }
+
+        result=self.conn.insert_one(data)
+
+        print("Inserted document ID:", result.inserted_id)
+
+
+
