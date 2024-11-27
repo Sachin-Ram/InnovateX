@@ -11,9 +11,13 @@ def func():
     print("Form Data:", request.form)
 
     req=request.get_json()
-    email=req['session']['mail']['value']
+    email=req['session']['email']['value']
+    name=req['session']['name']['value']
+
+    # name=data[0]
+    # email=data[len(data)-1]
     
-    object=auth("hello",email)
+    object=auth(name,email)
 
     data=object.authenticate()
 

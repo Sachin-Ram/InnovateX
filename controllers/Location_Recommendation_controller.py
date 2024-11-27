@@ -5,6 +5,8 @@ from services.Location_Recommendation import Location_Recommender
 
 location_ep=Blueprint("location",__name__)
 
+preferences=None
+
 @location_ep.route('/recommend',methods=['GET','POST'])
 def func():
     # req = request.get_json()
@@ -18,7 +20,7 @@ def func():
         preferences=','.join(data)
     else:
         preferences=data[0]
-    recommendor = Location_Recommender(data_file="/home/sachin/Innovate_X_/Dataset/updated_travel_recommendations.csv")
+    recommendor = Location_Recommender(city_data_file="/home/sachin/Innovate_X_/Dataset/updated_travel_recommendations.csv",place_data_file="/home/sachin/Innovate_X_/Dataset/Updated_Places.csv")
     data=recommendor.recommend_city(user_preferences=preferences)
     # data=recommendor.recommend_city(user_preferences="beach")
     data_dict=json.loads(data.to_json())
@@ -33,10 +35,15 @@ def func():
 
 @location_ep.route('/test',methods=['GET','POST'])
 def test():
-    data = {'name': 'John Doe'}
-    response = make_response(jsonify(data), 200)
-    response.headers["ngrok-skip-browser-warning"] ="45200"
-    return response
+
+    recommendor = Location_Recommender(city_data_file="/home/sachin/Innovate_X_/Dataset/updated_travel_recommendations.csv",place_data_file="/home/sachin/Innovate_X_/Dataset/Updated_Places.csv")
+    data=recommendor.recommend_places(city="Madurai",user_preferences=preferences)
+    print(data)
+    return jsonify(data)
+    # data = {'name': 'John Doe'}
+    # response = make_response(jsonify(data), 200)
+    # response.headers["ngrok-skip-browser-warning"] ="45200"
+    # return response
 
    
 
