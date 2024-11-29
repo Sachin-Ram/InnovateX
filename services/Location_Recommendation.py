@@ -6,11 +6,15 @@ import os
 
 class Location_Recommender:
 
-    def __init__(self, city_data_file, place_data_file, vectorizer_file='/home/sachin/Innovate_X_/Model/vectorizer.pkl', model_matrix_file='/home/sachin/Innovate_X_/Model/model_matrix.pkl'):
-        self.city_data_file = city_data_file
-        self.place_data_file = place_data_file
-        self.vectorizer_file = vectorizer_file
-        self.model_matrix_file = model_matrix_file
+    def __init__(self, city_data_file='Dataset/updated_travel_recommendations.csv', place_data_file='Dataset/Updated_Places.csv',
+                 vectorizer_file='model/vectorizer.pkl', model_matrix_file='model/model_matrix.pkl'):
+        # Use relative paths for files
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.city_data_file = os.path.join(base_dir, '..', city_data_file)
+        self.place_data_file = os.path.join(base_dir, '..', place_data_file)
+        self.vectorizer_file = os.path.join(base_dir, '..', vectorizer_file)
+        self.model_matrix_file = os.path.join(base_dir, '..', model_matrix_file)
+
         self.city_df = None
         self.place_df = None
         self.vectorizer = None

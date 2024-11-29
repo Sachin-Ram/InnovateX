@@ -20,7 +20,7 @@ def func():
         preferences=','.join(data)
     else:
         preferences=data[0]
-    recommendor = Location_Recommender(city_data_file="/home/sachin/Innovate_X_/Dataset/updated_travel_recommendations.csv",place_data_file="/home/sachin/Innovate_X_/Dataset/Updated_Places.csv")
+    recommendor = Location_Recommender()
     data=recommendor.recommend_city(user_preferences=preferences)
     # data=recommendor.recommend_city(user_preferences="beach")
     data_dict=json.loads(data.to_json())
