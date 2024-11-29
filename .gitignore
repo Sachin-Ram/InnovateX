@@ -10,3 +10,4 @@ model/
 **/__pycache__/
 *.py[cod]
 
+.vercel
