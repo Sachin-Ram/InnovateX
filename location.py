@@ -4,11 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Skyscanner API URL and headers
-url = "https://sky-scrapper.p.rapidapi.com/api/v1/flights/searchAirport"
-headers = {
-    "x-rapidapi-key": "a936e245bcmshd64f89361a4b760p16f603jsncae194454717",
-    "x-rapidapi-host": "sky-scrapper.p.rapidapi.com"
-}
+
 
 @app.route('/flights', methods=['GET'])
 def get_flights():
