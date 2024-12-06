@@ -55,7 +55,7 @@ class Flight_Services:
 
         querystring = {"originSkyId":origin_sid,"destinationSkyId":dest_sid,"originEntityId":origin_eid,"destinationEntityId":dest_eid,"date":start_date,"returnDate":return_date,"cabinClass":"economy","adults":"1","currency":"INR","market":"en-GB","countryCode":"IN"}
         print(querystring)
-       # querystring={"originSkyId":"MAA","destinationSkyId":"DEL","originEntityId":"95673361","destinationEntityId":"95673498","date":"2024-12-07","cabinClass":"economy","adults":"1","sortBy":"best","currency":"USD","market":"en-US","countryCode":"US"}
+        #querystring={"originSkyId":"MAA","destinationSkyId":"DEL","originEntityId":"95673361","destinationEntityId":"95673498","date":"2024-12-07","cabinClass":"economy","adults":"1","sortBy":"best","currency":"USD","market":"en-US","countryCode":"US"}
 
         headers = {
 	        "x-rapidapi-key": self.flight_apikey,
@@ -64,6 +64,7 @@ class Flight_Services:
 
         data = requests.get(url, headers=headers, params=querystring)
         data=data.json()
+        print(data)
         json_data=data['data']
         print("-----------------------------")
         # print(json_data)

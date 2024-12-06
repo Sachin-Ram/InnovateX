@@ -57,6 +57,6 @@ def func1():
 
     # Get the JSON data from the response and load it into a Python dictionary
     data = response.get_json()
-
+    print(data)
     # Format the JSON data with indentation and ensure it is properly encoded
-    return jsonify(data)
+    return data

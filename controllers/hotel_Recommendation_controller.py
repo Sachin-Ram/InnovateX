@@ -12,7 +12,7 @@ def func():
     # Instantiate recommendation object and fetch recommendations
     hotel_obj = Hotel_Recommendation(location)
     data = hotel_obj.recommend()  # Assuming this returns a list of dictionaries
-
+    print(data)
     # Filter and structure the output
     keys = ["One", "Two", "Three", "Four"]
     filtered_hotels = {}
@@ -30,3 +30,18 @@ def func():
     # Return the response
     
 
+@hotel_ep.route('/plan',methods=['GET','POST'])
+
+def plan():
+
+    req = request.get_json()
+    location = req['session']['location']['value']
+
+    # Instantiate recommendation object and fetch recommendations
+    hotel_obj = Hotel_Recommendation(location)
+
+    response=hotel_obj.planner()
+
+    #print(response)
+
+    return response
