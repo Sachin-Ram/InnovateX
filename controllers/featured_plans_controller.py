@@ -1,6 +1,8 @@
 from flask import Flask,request,Blueprint
 from services.Flight_Services import Flight_Services
 from services.Hotel_Recommendation import Hotel_Recommendation
+from controllers.authController import auth
+
 
 featured_plan_ep=Blueprint("featured_plan",__name__)
 
@@ -12,6 +14,8 @@ def function():
     end_city = request.form.get("ecity")
     start_date=request.form.get("sdate")
     return_date=request.form.get("rdate")
+    name=request.form.get("name")
+    email=request.form.get("email")
 
     print(start_city)
     print(end_city)
@@ -50,5 +54,9 @@ def function():
 
     final_data['flight_plans']=data
     final_data['hotel_plans']=response
+
+    authobj=auth(name=name,email=email)
+
+    authobj.add_data(final_data)
 
     return final_data

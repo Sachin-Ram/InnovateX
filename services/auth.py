@@ -1,4 +1,4 @@
-from controllers.database import database
+from controllers.database import Database
 
 class auth:
 
@@ -8,7 +8,7 @@ class auth:
 
         self.email=email
 
-        self.conn=database.getConnection()
+        self.conn=Database.getConnection()
 
     def authenticate(self):
 
@@ -39,6 +39,29 @@ class auth:
         result=self.conn.insert_one(data)
 
         print("Inserted document ID:", result.inserted_id)
+
+    def add_data(self,data):
+
+        name=self.name
+        mail=self.email
+
+        conn=self.conn
+        
+        collection = conn["search_log"]
+
+        data_to_insert = {
+            "name": name,
+            "email": mail,
+            "search_data": data
+        }
+
+        insert_result = collection.insert_one(data_to_insert)
+
+        print(f"Data inserted with document ID: {insert_result.inserted_id}")
+
+        return "success"
+
+
 
 
 
