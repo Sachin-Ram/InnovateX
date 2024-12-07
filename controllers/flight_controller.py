@@ -27,23 +27,27 @@ def func():
 
 @flight_ep.route('/flightplan',methods=['GET','POST'])
 def func1():
-    # start_city = request.args.get("scity")
-    # end_city = request.args.get("ecity")
-    # start_date=request.args.get("sdate")
-    # return_date=request.args.get("rdate")
+    start_city = request.form.get("scity")
+    end_city = request.form.get("ecity")
+    start_date=request.form.get("sdate")
+    return_date=request.form.get("rdate")
 
-    req=request.get_json()
+    # req=request.get_json()
+    # print("------------------------------------------")
+    # print(req)
 
-    start_city = req['session']['scity']['value']
-    end_city = req['session']['ecity']['value']
-    start_date=req['session']['sdate']['value']
-    return_date=req['session']['rdate']['value']
+
+    # start_city = req['session']['scity']['value']
+    # end_city = req['session']['ecity']['value']
+    # start_date=req['session']['sdate']['value']
+    # return_date=req['session']['rdate']['value']
 
     print(start_city)
     print(end_city)
     print(start_date)
     print(return_date)
-
+    
+    
     start_place = Flight_Services(start_city)
     end_place = Flight_Services(end_city)
 

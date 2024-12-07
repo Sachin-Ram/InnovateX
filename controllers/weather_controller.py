@@ -26,8 +26,12 @@ def func():
         }
     return make_response(jsonify(weather_data),200)
 
-@weather_ep.route('/hello')
+@weather_ep.route('/hello',methods=['POST',"GET"])
 def ind():
+    print("Request Body:", request.form.get("name"))
+    # req=request.get_json()
+    # print("------------------------------------------")
+    # print(req)
     return "hello"
 
 

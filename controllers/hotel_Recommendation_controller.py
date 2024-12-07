@@ -34,8 +34,9 @@ def func():
 
 def plan():
 
-    req = request.get_json()
-    location = req['session']['location']['value']
+    # req = request.get_json()
+    # location = req['session']['location']['value']
+    location=request.form.get("location")
 
     # Instantiate recommendation object and fetch recommendations
     hotel_obj = Hotel_Recommendation(location)

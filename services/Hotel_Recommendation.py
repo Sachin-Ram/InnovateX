@@ -32,31 +32,31 @@ class Hotel_Recommendation:
 
         response = requests.get(url, headers=headers, params=querystring)
 
-        # Check for a successful response
+    # Check for a successful response
         if response.status_code == 200:
-            data = response.json()  # Parse the JSON response
-            hotels = data.get("results", [])  # Extract the list of hotels (assuming it's under "results")
+            data = response.json()  
+            hotels = data.get("results", [])  
         else:
             print(f"Error: {response.status_code}")
-            return {}
+            return {"error": "Failed to fetch hotel data"}
+        
+        sorted_hotels = sorted(hotels, key=lambda x: x.get("rating", 0), reverse=True)
+        top_hotels = sorted_hotels[:4]
 
-        # Extract the top 4 hotels
-        top_hotels = hotels[:4]
+        exchange_rate = 83 #to convert the USD to INR
 
-        # Build the required JSON response
-        # formatted_response = {}
-        hotel_keys = ['A', 'B', 'C', 'D']
-
-        # Build the required JSON response
         formatted_response = {}
         for i, hotel in enumerate(top_hotels):
-            hotel_key = f"hotel{hotel_keys[i]}"  # Use the letters for keys
-            formatted_response[f"{hotel_key}name"] = hotel.get("name", "N/A")
-            formatted_response[f"{hotel_key}rating"] = hotel.get("rating", "N/A")
-            
-            price=hotel.get("price_range_usd", {}).get("max", "N/A")
+            plan_key = f"plan {i + 1}" 
+            price_in_usd = hotel.get("price_range_usd", {}).get("max", "N/A")
+        
+            if price_in_usd != "N/A":
+                price_in_inr = round(float(price_in_usd) * exchange_rate, 2)
 
-            formatted_response[f"{hotel_key}price"] = price*80
+            formatted_response[plan_key] = {
+                "name": hotel.get("name", "N/A"),
+                "rating": hotel.get("rating", "N/A"),
+                "price": price_in_inr
+            }
 
-        # Return the formatted JSON response
-        return json.dumps(formatted_response, indent=4)
+        return formatted_response
