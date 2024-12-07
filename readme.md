@@ -4,35 +4,17 @@
 
 ## Features  
 
-### 1. **Featured Trip**  
-- Gathers input from users, such as travel dates, locations.  
-- Fetches the best flight and hotel deals based on user criteria.  
-- Allows users to choose a plan and calculates the total trip cost.  
-- Facilitates payment processing through a third-party payment gateway.  
+### 1. **Plan a Trip**  
+- Skip the hassle of searching for flights and hotels! Simply provide your travel details, and WanderHub will fetch the best deals for you. Choose your preferred plan, get the total cost, and enjoy stress-free planning!
 
 ### 2. **User-Preferred Stay**  
-- Suggests a wide range of hotels in the user’s preferred destination.  
-- Provides customizable hotel booking options based on user preferences like ratings, location, and budget.  
-- Ensures a personalized experience for booking accommodations.  
+- Find the perfect place to stay! Enter your preferences, and WanderHub will recommend hotels based on your ratings, location, and budget. Easy booking at your fingertips! 
 
-### 3. **Expense Split**  
-- Allows users to split expenses across multiple travel requirements.  
-- Simplifies managing group travel expenses by dividing costs.  
-- Users can define how much to send and to whom for efficient money management.  
+### 3. **Expense Management**  
+- Manage your trip expenses effortlessly by categorizing them into food, stay, entertainment, and more. Keep track of your budget as you go! 
 
-### 4. **Weather Check**  
-- Helps users check weather conditions before traveling to a specific location.  
-- Provides real-time weather data to assist in travel planning and packing decisions.  
-
-## Technologies Used  
-- **Backend**: Python Flask for API development and business logic.  
-- **Frontend**: (Optional for this project) HTML/CSS/JavaScript templates for user interface.  
-- **APIs**:  
-  - Flight deals API for fetching flight options.  
-  - Hotel recommendation API for personalized stay suggestions.  
-  - Weather API for real-time weather updates.  
-- **Database**: Local database for user data and booking information.  
-- **Payment Gateway**: Integration with third-party services like PayPal, Stripe, or Razorpay.  
+### 4. **Weather Updates**  
+- Make sure you're prepared for any weather! Get real-time weather forecasts for your destination, helping you pack and plan accordingly.  
 
 
 ## Project Structure  
@@ -96,3 +78,4 @@ python3 app.py
 ```
 
 The app should now be live at http://127.0.0.1:5000.
+  
