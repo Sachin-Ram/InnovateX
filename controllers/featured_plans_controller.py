@@ -44,7 +44,7 @@ def function():
         return_date=return_date
     )
 
-    data = response.get_json()
+    data = response
     print(data)
 
     # Instantiate recommendation object and fetch recommendations
