@@ -25,7 +25,7 @@ def func():
     })
 
 
-@flight_ep.route('/flightplan')
+@flight_ep.route('/flightplan',methods=['GET','POST'])
 def func1():
     # start_city = request.args.get("scity")
     # end_city = request.args.get("ecity")
