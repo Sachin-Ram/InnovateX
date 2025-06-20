@@ -56,7 +56,7 @@ You should see the Python version (3.8 or higher) and pip version printed in the
 3. Clone the Repository
 
 ```bash
-git clone https://github.com/shivamksharma/DevBrute.git
+git clone https://github.com/Sachin-Ram/InnovateX.git
 ```
 2. Install the Dependencies :
 
